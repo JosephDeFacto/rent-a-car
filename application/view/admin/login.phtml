@@ -1,0 +1,22 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+<?php session_start(); ?>
+<div class="container-form">
+
+    <form method="post" action="" class="form">
+
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Enter your username" required />
+
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email" required />
+
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required="required" />
+
+        <hr>
+        <div class="form-group">
+            <input type="submit" value="Login">
+        </div>
+        <br>
+    </form>
+</div>

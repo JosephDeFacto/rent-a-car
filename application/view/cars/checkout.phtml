@@ -1,0 +1,54 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+<h1 class="checkout-title">Your checkout page</h1>
+<div class="row-checkout">
+    <div class="column">
+        <div class="info">
+            <?php
+                $totalPrice = 0;
+                if (isset($data)) {
+
+                    $rent_date = strtotime($data['pickup_date']);
+                    $return_date = strtotime($data['return_date']);
+                    //$datediff = $return_date - $rent_date;
+                    $datediff = $return_date - $rent_date;
+                    $period = round($datediff / (60 * 60 * 24));
+
+                    ?>
+                    <p class="bold">First name: <?php echo $data['firstname']; ?></p>
+                    <p class="bold">Last name: <?php echo $data['lastname'] . "<br>";?></p>
+                    <p class="bold">Car name: <?php echo $data['name'] . "<br>"; ?></p>
+                    <p class="bold">Car model: <?php echo $data['model']; ?></p>
+                    <p class="bold">Car information: <?php echo $data['info'] . "<br>"; ?></p>
+                    <p class="bold">Car price: <?php echo number_format($data['price'], 2, '.', '') . "kn" . "<br>"; ?></p>
+                    <p class="bold">Pickup location: <?php echo $data['pickup_location'] . "<br>"; ?></p>
+                    <p class="bold">Pickup date: <?php echo $data['pickup_date'] . "<br>"; ?></p>
+                    <p class="bold">Pickup time: <?php echo $data['pickup_time'] . "<br>"; ?></p>
+                    <p class="bold">Return location: <?php echo $data['return_location'] . "<br>"; ?></p>
+                    <p class="bold">Return date: <?php echo $data['return_date'] . "<br>"; ?></p>
+                    <p class="bold">Return time: <?php echo $data['return_time'] . "<br>"; ?></p>
+                    <p class="bold">Period: <?php echo $period; ?></p>
+                    <?php
+                    echo '<img src="' . '../uploads/' . $data['picture'] . '">' . "<br>";
+                    ?>
+                    <div class="total-price">
+                        <?php
+                        $total = $data['price'] * $period;
+                        echo "Total price: " .  number_format($total, 2, '.', '') . "kn";
+                        ?>
+                    </div>
+                <?php
+                }
+                ?>
+            <div class="place-order">
+                <a class="order" href="placeRentOrder"><span>Place Order</span></a>
+                <br>
+                Or
+                <br>
+                <a class="order" href="deleteRent?id=<?php echo $_SESSION['userID'] ?>">Delete Order</a>
+            </div>
+            <?php
+            ?>
+        </div>
+    </div>
+</div>

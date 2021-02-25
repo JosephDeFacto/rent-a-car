@@ -1,0 +1,42 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+
+<div class="row">
+    <div class="column">
+        <div class="info">
+            <table class="table-users">
+                <thead>
+                <tr>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Join Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+
+                if (isset($data)) {
+                    foreach ($data as $user) { ?>
+                        <tr>
+                            <td class="show-from"><?php echo $user['firstname']; ?></td>
+                            <td class="show-from"><?php echo $user['lastname']; ?></td>
+                            <td class="show-from"><?php echo $user['email']; ?></td>
+                            <td class="show-from"><?php echo $user['username']; ?></td>
+                            <td class="show-from"><?php echo $user['phone_number']; ?></td>
+                            <td class="show-from"><?php echo $user['join_time']; ?></td>
+                            <!--<td><a href="../AdminController/updateCar?id=<?php //echo $car['id']; ?>">Update</a></td> -->
+                            <td id="delete-column"><?php if (isset($_SESSION['adminID'])) ?> <script>document.getElementById("delete-column").style.visibility = "visible";</script>
+                                <a href="../AdminController/deleteUser?id=<?php echo $user['id']; ?>&name=<?php echo $user['firstname']; ?>">Delete user</a></td>
+                        </tr>
+                        <?php
+                    }
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

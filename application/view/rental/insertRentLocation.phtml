@@ -1,0 +1,54 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+<div class="row">
+    <div class="column">
+        <p class="rent-text">Choose location and time for pickup and return car.</p>
+        <form action="insertRentLocation" method="post">
+            <p>Choose pickup location: </p>
+            <select name="pickup_location" id="pickup_location">
+                <option value="zagreb-centar">Zagreb - Centar</option>
+                <option value="zagreb-zračna luka">Zagreb - Zračna luka</option>
+                <option value="split-centar">Split - Centar</option>
+                <option value="split-zračna luka">Split - Zračna luka</option>
+                <option value="rijeka-centar">Rijeka - Centar</option>
+                <option value="rijeka-zračna luka">Rijeka - Zračna luka</option>
+                <option value="osijek-centar">Osijek - Centar</option>
+                <option value="osijek-zračna luka">Osijek - Zračna luka</option>
+            </select>
+            <br><br>
+            <label for="pickup_date">Pickup Date: </label>
+            <input type="date" id="pickup_date" name="pickup_date">
+
+            <label for="pickup_time">Pickup Time: </label>
+            <input type="time" id="pickup_time" name="pickup_time" min="09:00" max="18:00" required>
+            <small>Office hourse are 9am - 6pm</small>
+            <br><br>
+
+            <p>Choose return location: </p>
+            <select name="return_location" id="return_location">
+                <option value="zagreb-centar">Zagreb - Centar</option>
+                <option value="zagreb-zračna luka">Zagreb - Zračna luka</option>
+                <option value="split-centar">Split - Centar</option>
+                <option value="split-zračna luka">Split - Zračna luka</option>
+                <option value="rijeka-centar">Rijeka - Centar</option>
+                <option value="rijeka-zračna luka">Rijeka - Zračna luka</option>
+                <option value="osijek-centar">Osijek - Centar</option>
+                <option value="osijek-zračna luka">Osijek - Zračna luka</option>
+            </select>
+            <br><br>
+            <label for="return_date">Return Date: </label>
+            <input type="date" id="return_date" name="return_date">
+
+            <label for="return_time">Return Time: </label>
+            <input type="time" id="return_time" name="return_time" min="09:00" max="18:00" required>
+            <small>Office hourse are 9am - 6pm</small>
+            <br><br>
+
+            <!-- IDs -->
+            <input type="hidden" name="car_id">
+            <input type="hidden" name="user_id">
+
+            <input type="submit" name="submit" value="Checkout">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+<div class="row-index">
+    <?php
+
+    if (isset($data)) {
+        foreach ($data as $cars) {
+            //echo '<img src="' . $cars['picture'] . '"/>';
+            echo '<img src="../uploads/' . $cars['picture'] . '" />' . "<br>";
+            ?>
+            <p class="bold"><?php echo $cars['name']; ?></p>
+            <p class="bold"><?php echo $cars['model']; ?></p>
+            <?php
+            ?>
+            <a class="check-more" href="rentCar?id=<?php echo $cars['id']; ?>">Check more</a>
+            <?php
+        }
+    }
+    ?>
+</div>

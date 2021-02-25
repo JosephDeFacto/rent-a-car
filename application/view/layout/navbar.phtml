@@ -1,0 +1,26 @@
+<?php
+
+if (isset($_SESSION['userID']) && $_SESSION['userID']) { ?>
+    <div class="topnav">
+        <a href="<?php echo SITE_ROOT; ?>/CarController/index">Cars</a>
+        <a href="<?php echo SITE_ROOT; ?>/UserController/rent">My Rent</a>
+        <div class="topnav-right">
+            <div class="username"><?php echo $_SESSION['username']; ?></div>
+            <a href="<?php echo SITE_ROOT; ?>/UserController/account">Account</a>
+            <a href="<?php echo SITE_ROOT; ?>/UserController/logout">Logout</a>
+        </div>
+    </div>
+<?php
+} else if (isset($_SESSION['adminID']) && $_SESSION['adminID']) { ?>
+    <div class="topnav">
+        <a class="nav-link" href="<?php echo SITE_ROOT; ?>/AdminController/manageUsers">Manage Users</a>
+        <a class="nav-link" href="<?php echo SITE_ROOT; ?>/AdminController/addNewCar">Add new car</a>
+        <a class="nav-link" href="<?php echo SITE_ROOT; ?>/CarController/index">Cars</a>
+        <div class="topnav-right">
+            <div class="username"><?php echo $_SESSION['username']; ?></div>
+            <a class="topnav-right" href="<?php echo SITE_ROOT; ?>/AdminController/logout">Logout</a>
+        </div>
+    </div>
+    <?php
+}
+?>

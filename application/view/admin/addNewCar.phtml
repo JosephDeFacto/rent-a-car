@@ -1,0 +1,40 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+<div class="container-form">
+    <h4 class="reg-form">Add new Car</h4>
+    <form method="post" action="" class="form" enctype="multipart/form-data">
+        <div class="add-input">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Car name" required />
+        </div>
+        <div class="add-input">
+            <label for="model">Model: </label>
+            <input type="text" name="model" id="model" class="form-control" placeholder="Enter lastname" required />
+        </div>
+        <div class="add-input">
+            <label for="picture">Picture: </label>
+            <input type="file" name="picture" id="picture" class="form-control"/>
+        </div>
+        <br>
+        <div class="add-input">
+            <label for="info">Info: </label>
+            <textarea name="info" id="info" class="form-control" rows="4" cols="40" required="required"></textarea>
+        </div>
+        <br>
+        <div class="add-input">
+            <label for="price">Price: </label>
+            <input type="text" name="price" id="price" class="form-control" placeholder="Price" required="required" />
+        </div>
+        <div class="add-input">
+            <label for="stock">Stock: </label>
+            <input type="number" name="stock" id="stock" class="form-control" required />
+        </div>
+
+
+        <hr>
+        <div class="form-group">
+            <input type="submit" value="Add">
+        </div>
+        <br>
+    </form>
+</div>

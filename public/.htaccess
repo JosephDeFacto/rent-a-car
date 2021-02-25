@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    Options -MultiViews
+    RewriteBase /rent-a-car/public
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+    Header unset ETag
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+</IfModule>

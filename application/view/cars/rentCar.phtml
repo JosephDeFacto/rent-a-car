@@ -1,0 +1,53 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+<div class="row">
+    <div class="column">
+        <div class="info">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Picture</th>
+                        <th scope="col">Info</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                if (isset($data)) {
+                    foreach ($data as $car) { ?>
+                    <tr>
+                        <td class="show-from"><?php echo $car['name']; ?></td>
+                        <td><img class="rent-image" src="<?php echo '../uploads/' . $car['picture']; ?>"></td>
+                        <td class="show-from"><?php echo $car['info']; ?></td>
+                        <td class="show-from"><?php echo $car['price'] . "kn"; ?></td>
+                        <td class="show-from"><?php echo $car['stock']; ?></td>
+                        <!--<td><a href="../AdminController/updateCar?id=<?php //echo $car['id']; ?>">Update</a></td> -->
+                        <td id="update-column"><?php if (isset($_SESSION['adminID'])) { ?> <script>document.getElementById("update-column").style.visibility = "visible";</script>
+                            <a href="../AdminController/updateCar?id=<?php echo $car['id']; ?>&name=<?php echo $car['name']; ?>">Update car</a></td>
+                            <?php } ?>
+                        <td id="delete-column"><?php if (isset($_SESSION['adminID'])) { ?> <script>document.getElementById("delete-column").style.visibility = "visible";</script>
+                            <a href="../AdminController/deleteCar?id=<?php echo $car['id']; ?>&name=<?php echo $car['name']; ?>">Delete car</a></td>
+                            <?php } ?>
+
+                    </tr>
+
+                    <?php
+                    }
+                }
+                ?>
+                </tbody>
+            </table>
+
+            <form action="" method="post">
+                <input type="hidden" name="car_id" value="<?php if(isset($car['car_id'])) echo $car['car_id']; ?>">
+                <input type="hidden" name="user_id" value="<?php if (isset($car['user_id'])) echo $car['user_id']; ?>">
+                <!-- if stock is less than one, it shouldn't be possible to rent a car -->
+                <input class="submit-rent" type="submit" value="Proceed" <?php if ($car['stock'] < 1) { ?> disabled <?php } ?>>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>

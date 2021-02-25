@@ -1,0 +1,53 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+<?php
+
+if (isset($data)) {
+    foreach ($data as $car) { ?>
+
+        <div class="container-form">
+            <h4 class="reg-form">Submit new update</h4>
+            <form method="post" action="updateCar" class="form" enctype="multipart/form-data">
+                <input type="hidden" name="id" id="id" value="<?php echo $car['id']; ?>" />
+
+                <div class="add-input">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Car name" required value="<?php echo $car['name']; ?>" />
+                </div>
+                <div class="add-input">
+                    <label for="model">Model: </label>
+                    <input type="text" name="model" id="model" class="form-control" placeholder="Car model" value="<?php echo $car['model']; ?>" />
+                </div>
+                <div class="add-input">
+                    <label for="picture">Picture: </label>
+                    <input type="file" name="picture" id="picture" class="form-control" required />
+                </div>
+                <br>
+                <div class="add-input">
+                    <label for="info">Info: </label>
+                    <textarea name="info" id="info" class="form-control" rows="4" cols="40" placeholder="Set some information" required></textarea>
+                </div>
+                <br>
+                <div class="add-input">
+                    <label for="price">Price: </label>
+                    <input type="text" name="price" id="price" class="form-control" placeholder="Update price" value="<?php echo $car['price']; ?>" required />
+                </div>
+                <div class="add-input">
+                    <label for="stock">Stock: </label>
+                    <input type="number" name="stock" id="stock" class="form-control" placeholder="Update stock" value="<?php echo $car['stock']; ?>" required />
+                </div>
+
+                <hr>
+                <div class="form-group">
+                    <input type="submit" name="update" value="Update">
+                </div>
+                <br>
+            </form>
+        </div>
+    <?php
+
+    }
+}
+
+?>
+

@@ -1,0 +1,20 @@
+<?php include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . 'header.phtml'; ?>
+
+<?php
+
+if (isset($data)) {
+    foreach ($data as $account) { ?>
+        <div id="gradient"></div>
+        <h2 class="card-title">User Information</h2>
+        <div id="card">
+            <p class="card-info">Name: <?php echo $account['firstname'] . ' ' . $account['lastname']; ?></p>
+            <p class="card-info">Email: <?php echo $account['email']; ?></p>
+            <p class="card-info">Username: <?php echo $account['username']; ?></p>
+            <p class="card-info">Phone number: <?php echo $account['phone_number']; ?></p>
+            <p class="card-info">Join time: <?php echo $account['join_time']; ?></p>
+            <a href="update?id=<?php echo $_SESSION['userID'] ?>">Update Data</a> |
+            <a href="changePassword?=id<?php echo $_SESSION['userID']; ?>">Change Password</a>
+        </div>
+    <?php
+    }
+}
